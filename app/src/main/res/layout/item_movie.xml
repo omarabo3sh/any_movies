@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+                       <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                           xmlns:app="http://schemas.android.com/apk/res-auto"
+                           xmlns:tools="http://schemas.android.com/tools"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="4dp"
+                           app:cardBackgroundColor="@android:color/black"
+                           app:cardCornerRadius="12dp"
+                           app:cardElevation="8dp"
+                           app:strokeColor="#333333"
+                           app:strokeWidth="1dp">
+
+                           <androidx.constraintlayout.widget.ConstraintLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content">
+
+                               <com.google.android.material.imageview.ShapeableImageView
+                                   android:id="@+id/imageMovie"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="0dp"
+                                   android:scaleType="centerCrop"
+                                   app:layout_constraintDimensionRatio="2:3"
+                                   app:layout_constraintEnd_toEndOf="parent"
+                                   app:layout_constraintStart_toStartOf="parent"
+                                   app:layout_constraintTop_toTopOf="parent"
+                                   app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+                                   tools:srcCompat="@color/white" />
+
+                               <View
+                                   android:layout_width="match_parent"
+                                   android:layout_height="100dp"
+                                   android:background="@drawable/gradient_overlay_item"
+                                   app:layout_constraintBottom_toBottomOf="@id/imageMovie" />
+
+                               <LinearLayout
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:orientation="vertical"
+                                   android:padding="12dp"
+                                   app:layout_constraintBottom_toBottomOf="@id/imageMovie">
+                                   <com.google.android.material.textview.MaterialTextView
+                                       android:id="@+id/textName"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:ellipsize="end"
+                                       android:maxLines="2"
+                                       android:shadowColor="#000000"
+                                       android:shadowDx="@integer/material_motion_duration_long_2"
+                                       android:shadowDy="@integer/material_motion_duration_long_2"
+                                       android:shadowRadius="2"
+                                       android:textColor="#DCF8F8F8"
+                                       android:textSize="16sp"
+                                       android:textStyle="bold"
+                                       android:letterSpacing="0.02"
+                                       android:fontFamily="@font/roboto_medium"
+                                       tools:text="Movie Name"
+                                       />
+
+                               </LinearLayout>
+
+                           </androidx.constraintlayout.widget.ConstraintLayout>
+
+                       </com.google.android.material.card.MaterialCardView>
