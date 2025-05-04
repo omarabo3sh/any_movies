@@ -1,5 +1,6 @@
 package com.example.myapplication.mvvm.details
 
+import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import com.example.myapplication.R
 import android.os.Bundle
@@ -16,7 +17,6 @@ import com.example.myapplication.data.MovieDetailsModel
 import com.example.myapplication.data.MovieResult
 import com.example.myapplication.databinding.FragmentDetailsBinding
 import com.example.myapplication.databinding.FragmentHomeBinding
-import com.example.myapplication.databinding.ItemMovieDetailsBinding
 import com.example.myapplication.mvvm.MovieAdapter
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
 
-    private var _binding: ItemMovieDetailsBinding? = null // Binding for the details fragment
+    private var _binding: FragmentDetailsBinding? = null // Binding for the details fragment
     private val binding get() = _binding!! // Non-null assertion for the binding
 
     private val detailsViewModel: DetailsViewModel by viewModels() // ViewModel for the details fragment
@@ -37,7 +37,7 @@ class DetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = ItemMovieDetailsBinding.inflate(inflater, container, false) // Inflate the layout for this fragment
+        _binding = FragmentDetailsBinding.inflate(inflater, container, false) // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -71,6 +71,7 @@ class DetailsFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateUI(movie: MovieDetailsModel) {
         // Set title
         binding.tvMovieTitle.text = movie.title
@@ -101,8 +102,6 @@ class DetailsFragment : Fragment() {
                 binding.chipGroupGenres.addView(chip)
             }
         }
-
-//         Add additional movie details as needed
     }
 
     private fun formatDate(dateString: String?): String {
