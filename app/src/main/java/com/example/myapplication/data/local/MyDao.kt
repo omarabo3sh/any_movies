@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.myapplication.data.MovieResult
+import com.example.myapplication.data.models.MovieResult
 
 @Dao
 interface MyDao {
@@ -15,8 +15,6 @@ interface MyDao {
     @Query("select * from MovieResult")
     suspend fun getMovies(): List<MovieResult> // get all movies
 
-//    @Query("select * from MovieResult where id = :id")
-//    suspend fun getMovieById(id: Int): MovieResult?  wrong cause its for cashing not calling
 
 
 

@@ -22,7 +22,7 @@
             android:name=".mvp.MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".mvvm.MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

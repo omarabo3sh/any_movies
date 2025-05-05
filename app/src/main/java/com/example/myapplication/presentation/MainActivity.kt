@@ -1,11 +1,8 @@
-package com.example.myapplication.mvvm
+package com.example.myapplication.presentation
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.mvvm.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 

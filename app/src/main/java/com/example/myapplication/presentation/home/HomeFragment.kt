@@ -1,4 +1,4 @@
-package com.example.myapplication.mvvm.home
+package com.example.myapplication.presentation.home
 
 import com.example.myapplication.R
 import android.os.Bundle
@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.example.myapplication.data.MovieResult
+import com.example.myapplication.data.models.MovieResult
 import com.example.myapplication.databinding.FragmentHomeBinding
-import com.example.myapplication.mvvm.MovieAdapter
+import com.example.myapplication.presentation.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,20 +50,35 @@ class HomeFragment : Fragment() {
         observes() // Observe the LiveData from the ViewModel
     }
 
-    private fun observes() { // Observe the LiveData from the ViewModel
-            homeViewModel.moviesLiveData.observe(viewLifecycleOwner) {
-                movieAdapter.movieList = it as? ArrayList<MovieResult> // Update the adapter with the new data
-                binding.recyclerMovie.adapter = movieAdapter
-            }
-            homeViewModel.loading.observe(viewLifecycleOwner) {// Observe the loading state
-                if (it) {  // If loading is true, show the progress bar
-                    binding.progressBar.visibility = View.VISIBLE
-                } else { // If loading is false, hide the progress bar
-                    binding.progressBar.visibility = View.GONE
-                }
+
+    private fun observes() {   homeViewModel.moviesLiveData.observe(viewLifecycleOwner) { movies ->
+        binding.progressBar.visibility = View.VISIBLE
+        if (!movies.isNullOrEmpty()) {
+            movieAdapter.movieList = movies as? ArrayList<MovieResult>
+            binding.recyclerMovie.adapter = movieAdapter
+            binding.progressBar.visibility = View.GONE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
+    }
 
 
-            }
+
+    // Observe the LiveData from the ViewModel
+//            homeViewModel.moviesLiveData.observe(viewLifecycleOwner) {
+//                movieAdapter.movieList = it as? ArrayList<MovieResult> // Update the adapter with the new data
+//                binding.recyclerMovie.adapter = movieAdapter
+//            }
+//            homeViewModel.loading.observe(viewLifecycleOwner) {// Observe the loading state
+//                if (it) {  // If loading is true, show the progress bar
+//                    binding.progressBar.visibility = View.VISIBLE
+//                } else { // If loading is false, hide the progress bar
+//                    binding.progressBar.visibility = View.GONE
+//                }
+//
+//            }
+
+
 
         }
 

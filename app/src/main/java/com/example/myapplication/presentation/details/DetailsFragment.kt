@@ -1,23 +1,18 @@
-package com.example.myapplication.mvvm.details
+package com.example.myapplication.presentation.details
 
 import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
-import com.example.myapplication.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.compose.ui.text.intl.Locale
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.example.myapplication.data.MovieDetailsModel
-import com.example.myapplication.data.MovieResult
+import com.example.myapplication.data.models.RemoteMovieDetailsModel
 import com.example.myapplication.databinding.FragmentDetailsBinding
-import com.example.myapplication.databinding.FragmentHomeBinding
-import com.example.myapplication.mvvm.MovieAdapter
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -72,7 +67,7 @@ class DetailsFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun updateUI(movie: MovieDetailsModel) {
+    private fun updateUI(movie: RemoteMovieDetailsModel) {
         // Set title
         binding.tvMovieTitle.text = movie.title
 

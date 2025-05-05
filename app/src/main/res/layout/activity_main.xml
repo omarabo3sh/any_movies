@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".mvvm.MainActivity">
+    tools:context=".presentation.MainActivity">
 
    <androidx.fragment.app.FragmentContainerView
        android:id="@+id/fragment_container"

@@ -1,22 +1,19 @@
-package com.example.myapplication.mvvm.details
+package com.example.myapplication.presentation.details
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.data.MovieDetailsModel
-import com.example.myapplication.data.MovieModel
-import com.example.myapplication.data.MovieResult
-import com.example.myapplication.mvvm.Repository
+import com.example.myapplication.data.Repository
+import com.example.myapplication.data.models.RemoteMovieDetailsModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 @HiltViewModel
 class DetailsViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    private val _movieDetailsLiveData = MutableLiveData<MovieDetailsModel?>() // LiveData for movie details
+    private val _movieDetailsLiveData = MutableLiveData<RemoteMovieDetailsModel?>() // LiveData for movie details
     val movieDetailsLiveData get() = _movieDetailsLiveData // Expose LiveData to observe movie details
 
     private val _loading = MutableLiveData<Boolean>() // LiveData for loading state
@@ -31,8 +28,8 @@ class DetailsViewModel @Inject constructor(private val repository: Repository) :
 
         viewModelScope.launch(IO) { // Launch a coroutine in the IO dispatcher
             try {
-                val data = repository.getMovieDetails(movieId) // Fetch movie details from the repository
-                _movieDetailsLiveData.postValue(data) // Post the fetched data to LiveData
+//                val data = repository.getMovieDetails(movieId) // Fetch movie details from the repository
+//                _movieDetailsLiveData.postValue(data) // Post the fetched data to LiveData
             } catch (e: Exception) {
                 Log.e("DetailsViewModel", "Error fetching movie details", e) // Log the error
                 _error.postValue("Failed to load movie details: ${e.message}") // Post error message to LiveData

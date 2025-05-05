@@ -1,10 +1,10 @@
-package com.example.myapplication.mvvm
+package com.example.myapplication.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.myapplication.data.MovieResult
+import com.example.myapplication.data.models.MovieResult
 import com.example.myapplication.databinding.ItemMovieBinding
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.Holder>() {
